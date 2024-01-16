@@ -82,6 +82,8 @@ if query:
 # FAISS --> works with python 3.9.7  not with 3.10 or 3.11 or 
 # change your python version in vs code by selected it in botton right corner
 
-# how to run 
+# how to run
+# create env by python -m venv <name>
 # go to terminal pip install -r doctalk_faiss_requirement.txt
+# download pdf file 
 # first activate environment then type streamlit run try3.py to run this file 
