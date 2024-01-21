@@ -1,0 +1,8 @@
+Faiss:-->   
+  "https://python.langchain.com/docs/integrations/vectorstores/faiss"
+  // it first convert text to embedding and then store it in database "docsearch"
+  docsearch = FAISS.from_texts(texts, embeddings)
+  // then it  query the vectorstore
+  docs = docsearch.similarity_search(query)
+  
+  
