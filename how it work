@@ -2,7 +2,9 @@ Faiss:-->
   "https://python.langchain.com/docs/integrations/vectorstores/faiss"
   // it first convert text to embedding and then store it in database "docsearch"
   docsearch = FAISS.from_texts(texts, embeddings)
-  // then it  query the vectorstore
+  // in the context of Faiss and similarity search, when we talk about "answering a query,"
+      we mean finding and retrieving the most relevant items from a dataset based on their 
+      similarity to the query    source -- gpt
   docs = docsearch.similarity_search(query)
   
   
