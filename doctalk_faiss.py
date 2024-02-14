@@ -34,7 +34,7 @@ def main():
         # os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
         OPENAI_API_KEY = "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"
         
-        embeddings = OpenAIEmbeddings()
+        embeddings = OpenAIEmbeddings(openai_api_key="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")
 
         docsearch = FAISS.from_texts(texts, embeddings)
 
