@@ -32,9 +32,9 @@ def main():
 
         # Download embeddings from OpenAI
         # os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
-        OPENAI_API_KEY = "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"
+        OPENAI_API_KEY = "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"
         
-        embeddings = OpenAIEmbeddings(openai_api_key="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")
+        embeddings = OpenAIEmbeddings(openai_api_key="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")
 
         docsearch = FAISS.from_texts(texts, embeddings)
 
