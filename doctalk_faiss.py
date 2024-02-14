@@ -6,7 +6,7 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS    
 from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import OpenAI
-import os   
+# import os   
 
 def main():
     st.title("Document Search and Question Answering")
@@ -31,12 +31,13 @@ def main():
         texts = text_splitter.split_text(raw_text)
 
         # Download embeddings from OpenAI
-        os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
-        embeddings = OpenAIEmbeddings()
+        # os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
+        
+        embeddings = OpenAIEmbeddings(key="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")
 
         docsearch = FAISS.from_texts(texts, embeddings)
 
-        chain = load_qa_chain(OpenAI(), chain_type="stuff")
+        chain = load_qa_chain(OpenAI(key="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"), chain_type="stuff")
 
         query = st.text_input('Type your query here... then press enter')
 
