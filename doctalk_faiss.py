@@ -32,12 +32,13 @@ def main():
 
         # Download embeddings from OpenAI
         # os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
+        OPENAI_API_KEY = "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"
         
-        embeddings = OpenAIEmbeddings(key="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")
+        embeddings = OpenAIEmbeddings()
 
         docsearch = FAISS.from_texts(texts, embeddings)
 
-        chain = load_qa_chain(OpenAI(key="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"), chain_type="stuff")
+        chain = load_qa_chain(OpenAI(), chain_type="stuff")
 
         query = st.text_input('Type your query here... then press enter')
 
