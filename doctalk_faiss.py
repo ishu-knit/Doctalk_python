@@ -6,7 +6,6 @@ from langchain.text_splitter import CharacterTextSplitter
 from langchain_community.vectorstores import FAISS    
 from langchain.chains.question_answering import load_qa_chain
 from langchain_openai import OpenAI
-# import os   
 
 def main():
     st.title("Document Search and Question Answering")
@@ -31,21 +30,27 @@ def main():
         texts = text_splitter.split_text(raw_text)
 
         # Download embeddings from OpenAI
-        # os.environ["OPENAI_API_KEY"] = "sk-vhCRSEjDhpwpTd2U4CfT3BlbkFJ1OCSQxoS45pa3IENBXCy"
-        OPENAI_API_KEY = "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"
         
-        embeddings = OpenAIEmbeddings(openai_api_key="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")
+        key = "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"
+        
 
-        docsearch = FAISS.from_texts(texts, embeddings)
+        try:
+            embeddings = OpenAIEmbeddings(openai_api_key=key)
+            docsearch = FAISS.from_texts(texts, embeddings)
 
-        chain = load_qa_chain(OpenAI(), chain_type="stuff")
+            chain = load_qa_chain(OpenAI(openai_api_key=key), chain_type="stuff")
 
-        query = st.text_input('Type your query here... then press enter')
+            query = st.text_input('Type your query here... then press enter')
 
-        if query:
-            docs = docsearch.similarity_search(query)
-            result = chain.run(input_documents=docs, question=query)
-            st.write(result)
+            if query:
+                docs = docsearch.similarity_search(query)
+                result = chain.run(input_documents=docs, question=query)
+                st.write(result)
+
+        except :
+            st.warning("Openai api key may  reach its limit  or comsumed all its credit !!")
+            st.warning("Use differnet Openai api key to fix error")
+   
 
 main()
 
